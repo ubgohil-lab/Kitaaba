@@ -81,7 +81,7 @@ const STATS = [
   { icon: Award, label: "Editor's Selection", value: "3 badges" },
 ];
 
-export default function Kitaaba() {
+export default function Kitaaba({ onStartWriting = () => {} }) {
   const [navSolid, setNavSolid] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -320,14 +320,14 @@ export default function Kitaaba() {
           <div className="kt-nav-links">
             <a href="#mission">Mission</a>
             <a href="#how">How it works</a>
-            <a href="#write">The Editor</a>
+            <a href="#editor-preview">The Editor</a>
             <a href="#discover">Discovery</a>
             <a href="#professional">For Professionals</a>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <a href="#write" className="kt-btn kt-btn-primary kt-nav-cta">
+            <button onClick={onStartWriting} className="kt-btn kt-btn-primary kt-nav-cta">
               Start Writing <ArrowRight size={15} />
-            </a>
+            </button>
             <button className="kt-menu-btn" onClick={() => setMenuOpen((v) => !v)} aria-label="Menu">
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -337,7 +337,7 @@ export default function Kitaaba() {
           <div className="kt-mobile-panel kt-wrap">
             <a href="#mission" onClick={() => setMenuOpen(false)}>Mission</a>
             <a href="#how" onClick={() => setMenuOpen(false)}>How it works</a>
-            <a href="#write" onClick={() => setMenuOpen(false)}>The Editor</a>
+            <a href="#editor-preview" onClick={() => setMenuOpen(false)}>The Editor</a>
             <a href="#discover" onClick={() => setMenuOpen(false)}>Discovery</a>
             <a href="#professional" onClick={() => setMenuOpen(false)}>For Professionals</a>
           </div>
@@ -360,7 +360,7 @@ export default function Kitaaba() {
               No follower counts. Just writing, and the people looking for exactly this.
             </p>
             <div className="kt-hero-actions">
-              <a href="#write" className="kt-btn kt-btn-primary">Start Writing <ArrowRight size={16} /></a>
+              <button onClick={onStartWriting} className="kt-btn kt-btn-primary">Start Writing <ArrowRight size={16} /></button>
               <a href="#discover" className="kt-btn kt-btn-ghost">Explore Writings</a>
             </div>
           </div>
@@ -450,7 +450,7 @@ export default function Kitaaba() {
       </section>
 
       {/* THE EDITOR */}
-      <section className="kt-section" id="write">
+      <section className="kt-section" id="editor-preview">
         <div className="kt-wrap">
           <Reveal>
             <div className="kt-head">
@@ -674,7 +674,7 @@ export default function Kitaaba() {
             <p style={{ color: "var(--paper-soft)", maxWidth: 480, margin: "0 auto 36px", fontSize: 16.5, lineHeight: 1.7 }}>
               No feed to perform for. No follower count to chase. Just the page, and whoever needs to read it.
             </p>
-            <a href="#top" className="kt-btn kt-btn-gold">Start Writing <ArrowUpRight size={16} /></a>
+            <button onClick={onStartWriting} className="kt-btn kt-btn-gold">Start Writing <ArrowUpRight size={16} /></button>
           </Reveal>
         </div>
       </section>
